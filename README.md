@@ -7,9 +7,13 @@ SUBSCRIBE ME ON YOUTUBE - [https://www.youtube.com/@D4rkCipherX]
 Install with python
 
 git clone https://github.com/Not-D4rkCipherX/YesCoin.git
+
 cd YesCoin
+
 nano data.txt
+
 npm i
+
 node yes.js
 
 ## Features
