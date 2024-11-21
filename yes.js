@@ -632,7 +632,7 @@ class YesCoinBot {
 
   async wait(seconds) {
     for (let i = seconds; i > 0; i--) {
-      process.stdout.write(`\r${colors.cyan(`[*] Chờ ${Math.floor(i / 60)} phút ${i % 60} giây để tiếp tục`)}`.padEnd(80));
+      process.stdout.write(`\r${colors.cyan(`[*] Wait${Math.floor(i / 60)} minute ${i % 60}seconds to continue`)}`.padEnd(80));
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
     console.log(`Start new loop...`);
