@@ -24,7 +24,7 @@ function updateEnv(variable, value) {
   // Đọc file .env
   fs.readFile(envFilePath, "utf8", (err, data) => {
     if (err) {
-      console.log("Không thể đọc file .env:", err);
+      console.log("Unable to read .env file:", err);
       return;
     }
     // Tạo hoặc cập nhật biến trong file
@@ -39,9 +39,9 @@ function updateEnv(variable, value) {
     // Ghi lại file .env
     fs.writeFile(envFilePath, newData, "utf8", (err) => {
       if (err) {
-        console.error("Không thể ghi file .env:", err);
+        console.error("Unable to write .env file:", err);
       } else {
-        console.log(`Đã cập nhật ${variable} thành ${value}`);
+        console.log(`Updated ${variable} to ${value}`);
       }
     });
   });
@@ -84,16 +84,16 @@ function isExpiredToken(token) {
 
     if (parsedPayload.exp) {
       const expirationDate = DateTime.fromSeconds(parsedPayload.exp).toLocal();
-      this.log(colors.cyan(`Token hết hạn vào: ${expirationDate.toFormat("yyyy-MM-dd HH:mm:ss")}`));
+      this.log(colors.cyan(`Token expires on: ${expirationDate.toFormat("yyyy-MM-dd HH:mm:ss")}`));
       const isExpired = now > parsedPayload.exp;
-      this.log(colors.cyan(`Token đã hết hạn chưa? ${isExpired ? "Đúng rồi bạn cần thay token" : "Chưa..chạy tẹt ga đi"}`));
+      this.log(colors.cyan(`Has the token expired? ${isExpired ? "That's right, you need to change the token" : "No..go full throttle"}`));
       return isExpired;
     } else {
-      this.log(colors.yellow(`Token vĩnh cửu không đọc được thời gian hết hạn`));
+      this.log(colors.yellow(`Perpetual tokens have unreadable expiration times`));
       return false;
     }
   } catch (error) {
-    this.error(colors.red(`Lỗi rồi: ${error.message}`));
+    this.error(colors.red(`Error:${error.message}`));
     return true;
   }
 }
@@ -124,12 +124,12 @@ function loadData(file) {
   try {
     const datas = fs.readFileSync(file, "utf8").replace(/\r/g, "").split("\n").filter(Boolean);
     if (datas?.length <= 0) {
-      console.log(colors.red(`Không tìm thấy dữ liệu ${file}`));
+      console.log(colors.red(`No data found ${file}`));
       process.exit();
     }
     return datas;
   } catch (error) {
-    console.log(`Không tìm thấy file ${file}`.red);
+    console.log(`File not found ${file}`.red);
   }
 }
 
